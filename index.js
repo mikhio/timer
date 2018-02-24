@@ -21,17 +21,27 @@ var Timer = function(obj){
     return this.time;
   }
 }
+var hour = new Timer({
+  time: 1,
+  onTick: () => {
+    id('hour').innerText = hour.get()
+  }
+});
 
 var min = new Timer({
-  time: 10,
+  time: 60,
   onTick: () => {
     id('min').innerText = min.get()
+  },
+  onEnd: () => {
+    hour.update();
+    min.time = 60;
   }
 });
 
 var sec = new Timer({
   time: 60,
-  interval: 100,
+  interval: 1000,
   onTick: () => {
     id('sec').innerText = sec.get()
   },
@@ -46,6 +56,7 @@ var sec = new Timer({
 id('start').addEventListener('click', sec.start);
 id('stop').addEventListener('click', sec.stop);
 
+requestAnimationFrame(hour.onTick)
 requestAnimationFrame(min.onTick)
 requestAnimationFrame(sec.onTick)
 
