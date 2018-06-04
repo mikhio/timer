@@ -7,14 +7,14 @@ var div = document.querySelector('.res');
 var find = function (cl, key) {
 	var el = document.querySelector('.' + cl);
 	el.addEventListener('click', function() {
-		div.textContent = cl;
+		div.textContent = key;
 	});
 	
 };
 
-find('start', start);
-find('stop', stop);
-find('clear', clear);
+find('start', 'start');
+find('stop', 'stop');
+find('clear', 'clear');
 
 //document.body.addEventListener('keydown', function(event) {
 //	ch(event.key);
